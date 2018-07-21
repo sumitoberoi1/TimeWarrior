@@ -2,6 +2,7 @@ package com.example.sumitoberoi.timefighter
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.widget.Button
 import android.widget.TextView
 
@@ -11,6 +12,10 @@ class MainActivity : AppCompatActivity() {
     internal lateinit var gameScoreTextView:TextView
     internal lateinit var timeLeftTextView:TextView
     internal var score = 0
+    internal var gameStarted = false
+    internal lateinit var countDownTimer:CountDownTimer
+    internal val initialCountDown:Long = 60000
+    internal val countDownInterval:Long = 1000
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -21,6 +26,7 @@ class MainActivity : AppCompatActivity() {
         tapmeButton = findViewById<Button>(R.id.tap_me_button)
         gameScoreTextView = findViewById<TextView>(R.id.game_score_text_view)
         timeLeftTextView = findViewById<TextView>(R.id.time_left_text_view)
+        resetGame()
         tapmeButton.setOnClickListener { view ->
             incrementScore()
         }
@@ -31,4 +37,29 @@ class MainActivity : AppCompatActivity() {
         var newScoreString = getString(R.string.your_score,score.toString())
         gameScoreTextView.text = newScoreString
     }
+
+    private fun startTimer() {
+        if (!gameStarted) {
+            countDownTimer.start()
+            gameStarted = false
+        }
+    }
+
+    private fun resetGame() {
+        score = 0
+        gameScoreTextView.text = getString(R.string.your_score,score.toString())
+        val initialTimeLeft = initialCountDown/1000
+        timeLeftTextView.text = getString(R.string.time_left,initialTimeLeft.toString())
+        countDownTimer = object:CountDownTimer(initialCountDown,countDownInterval) {
+            override fun onTick(timeLeft: Long) {
+                timeLeftTextView.text = getString(R.string.time_left,(timeLeft/1000).toString())
+            }
+            override fun onFinish() {
+
+            }
+        }
+        gameStarted = false
+    }
+
+
 }
