@@ -7,21 +7,22 @@
     tools:context="com.example.sumitoberoi.timefighter.MainActivity">
 
     <TextView
-        android:id="@+id/game_score_textview"
+        android:id="@+id/game_score_text_view"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="Your score : %s"
+        android:text="@string/your_score"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/time_left_text_view"
         android:layout_width="wrap_content"
         android:layout_height="19dp"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="16dp"
+        android:text="@string/time_left"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -29,7 +30,7 @@
         android:id="@+id/tap_me_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tap Me"
+        android:text="@string/tap_me"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
