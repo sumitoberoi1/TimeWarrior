@@ -91,11 +91,17 @@ class MainActivity : AppCompatActivity() {
         score += 1
         var newScoreString = getString(R.string.your_score,score.toString())
         gameScoreTextView.text = newScoreString
+        doScoreAnimation(gameScoreTextView)
     }
 
     private fun doButtonAnimation(view:View){
         val bounceAnimation = AnimationUtils.loadAnimation(this,R.anim.bounce)
         view.startAnimation(bounceAnimation)
+    }
+
+    private fun doScoreAnimation(view: TextView) {
+        val scoreChangeAnimation = AnimationUtils.loadAnimation(this,R.anim.score_change_animation)
+        view.startAnimation(scoreChangeAnimation)
     }
 
     private fun startTimer() {
