@@ -14,6 +14,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="@string/your_score"
+        android:textColor="@color/textviewColor"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,13 +25,15 @@
         android:layout_marginEnd="16dp"
         android:layout_marginTop="16dp"
         android:text="@string/time_left"
+        android:textColor="@color/textviewColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/tap_me_button"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="47dp"
+        android:background="@android:color/holo_green_light"
         android:text="@string/tap_me"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
