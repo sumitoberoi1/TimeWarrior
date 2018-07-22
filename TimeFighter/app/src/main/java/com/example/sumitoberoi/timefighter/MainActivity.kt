@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.PersistableBundle
 import android.util.Log
+import android.view.View
+import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -31,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         Log.d(TAG,"onc create called with score $score")
-        configUI()
+        configUI(savedInstanceState)
     }
 
     override fun onSaveInstanceState(outState: Bundle?) {
@@ -62,6 +64,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         tapmeButton.setOnClickListener { view ->
+            doButtonAnimation(view)
             startTimer()
             incrementScore()
         }
@@ -88,6 +91,11 @@ class MainActivity : AppCompatActivity() {
         score += 1
         var newScoreString = getString(R.string.your_score,score.toString())
         gameScoreTextView.text = newScoreString
+    }
+
+    private fun doButtonAnimation(view:View){
+        val bounceAnimation = AnimationUtils.loadAnimation(this,R.anim.bounce)
+        view.startAnimation(bounceAnimation)
     }
 
     private fun startTimer() {
